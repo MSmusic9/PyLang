@@ -4,7 +4,7 @@ from termcolor import colored as clr
 
 
 class CompileLang:
-	def __init__(self):
+	def __init__(self,filepath):
 		self.file = open(self.filepath)
 		self.compiler = open("main.c","a")
 	def onEveryLine(self,line:str,command):
@@ -20,5 +20,16 @@ class CompileLang:
 		print(clr(deco,color,attrs=[effect]))
 	def run(self):
 		self.compiler.close()
+                self.file.close
 		os.system("gcc main.c -o main")
 		os.remove("main.c")
+
+
+class InterplerLang(CompilerLang):
+        def __new__(self,filepath):
+                self.file = open(self.filepath)
+        def run(self):
+                self.file.close()
+        def execOn(self,linecom,execline):
+                if self.line == linecom:
+                        exec(execline)
