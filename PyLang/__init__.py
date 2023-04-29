@@ -1,4 +1,5 @@
 import os
+os.system("pip install numba && pip install termcolor")
 from numba import njit
 from termcolor import colored as clr
 
