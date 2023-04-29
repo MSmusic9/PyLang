@@ -3,7 +3,7 @@ from numba import njit
 from termcolor import colored as clr
 
 
-class CompileLang:
+class CompilerLang:
 	def __init__(self,filepath):
 		self.file = open(self.filepath)
 		self.compiler = open("main.c","a")
