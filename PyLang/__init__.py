@@ -20,7 +20,7 @@ class CompilerLang:
 		print(clr(deco,color,attrs=[effect]))
 	def run(self):
 		self.compiler.close()
-                self.file.close
+                self.file.close()
 		os.system("gcc main.c -o main")
 		os.remove("main.c")
 
