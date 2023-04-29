@@ -20,7 +20,7 @@ methods of both classes.
 
 
 
-# Classes, methods and examples
+# Classes and methods
 And now, we can start.
 
 ### CompilerLang(filepath: str)
@@ -31,9 +31,34 @@ Use it at the end of program. It runs compiler.
 That loop which do 'command' every iteration.
 #### interrupt(from: int,to: int)
 Line-iterator trimming.
-####
+#### execOn(compareline: str,execline: str)
+If line-iterator equals 'compareline', it exectues 
+'execline'.
+#### showMessage(msg: str,color: str,effect: str)
+Prints colored line with some 'effect' like bold.
 
-### InterplerLang() # Extends CompilerLang
+### InterplerLang(filepath: str) # Extends CompilerLang
 The Python class that builds-up your file, but <b>NOT</b>
 compiler.
-#### 
+
+
+# Examples
+Example: Math language(only a bit of code, after i'll upload
+completed language):
+```Python
+# Import class
+from PyLang import InterplerLang as inter
+
+# Build-up the file
+lang = inter("main.math")
+lines = ""
+
+# Parse function
+def parse():
+  # print line on concident of lines of file and 'print whattoprint'
+  lang.execOn("print {l}\n".format(l=lang.interrupt(6,-3)),"print({l})".format(l=lang.interrupt(6,-3)))
+  # I'm lazy to continue the code
+
+lang.onEveryLine(lines,parse)
+lang.run()
+```
