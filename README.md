@@ -1,5 +1,7 @@
+[![PyLang](https://github.com/MSmusic9/PyLang/actions/workflows/python-publish.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/MSmusic9/PyLang/actions/workflows/python-publish.yml)
+
+
 # PyLang
-Click on [![PyLang](https://github.com/MSmusic9/PyLang/actions/workflows/python-publish.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/MSmusic9/PyLang/actions/workflows/python-publish.yml).
 PyLang is a small framework to make languages using Python.
 
 ### How to use
