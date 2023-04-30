@@ -3,9 +3,9 @@ from termcolor import colored as clr
 
 
 class CompilerLang:
-	def __init__(self,filepath):
+  def __init__(self,filepath):
     self.filepath = filepath
-		self.file = open(self.filepath)
+    self.file = open(self.filepath)
 		self.compiler = open("main.c","a")
 	def onEveryLine(self,line:str,command):
 		self.line = line
