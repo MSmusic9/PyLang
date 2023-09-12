@@ -1,40 +1,29 @@
-import os
-from termcolor import colored as clr
+import re
 
 
-class CompilerLang:
-  def __init__(self,filepath):
-    self.filepath = filepath
-    self.file = open(self.filepath)
-		self.compiler = open("main.c","a")
-	def onEveryLine(self,line:str,command):
-		self.line = line
-		for self.line in self.file.readlines():
-			command()
-	def interrupt(self,i1:int,i2:int):
-		return self.line[i1:i2]
-	def execOn(self,linecom:str,execline:str):
-		if self.line == linecom:
-			self.compiler.write(execline)
-  def setMainStruct(self):
-    self.compiler.write('#include "stdio.h"\n')
-	def showMessage(self,deco:str,color:str,effect:str):
-		print(clr(deco,color,attrs=[effect]))
-	def run(self):
-		self.compiler.close()
-    self.file.close()
-		os.system("gcc main.c -o main")
-		os.remove("main.c")
+class InterpretLang:
+	def __init__(self, **tokens):
+		self.init_tokens(tokens)
 
+	def init_tokens(self, **tokens):
+		self.tokens = tokens
 
-class InterplerLang(CompilerLang):
-  def __new__(self,filepath):
-    self.filepath = filepath
-    self.file = open(self.filepath)
-  def run(self):
-    self.file.close()
-  def setMainStruct(self):
-    pass
-  def execOn(self,linecom,execline):
-    if self.line == linecom:
-      exec(execline)
+	def tokenize(self, code: str, err = lambda l: pass):
+		toks = []
+		pos = 0
+		nowchr = lambda: code[pos, pos]
+		futchr = lambda: code[pos + 1, pos + 1]
+		for key in self.tokens.items():
+			if re.match(nowchr(), self.tokens[key]):
+				text = nowchr()
+				while re.match(futchr(), self.tokens[key]):
+					pos += 1
+					text += nowchr()
+				toks.append([key, text])
+			else:
+				err(nowchr())
+				return
+		return toks
+
+	def construct(toks: list, fn = lambda: pass):
+		
